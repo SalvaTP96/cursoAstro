@@ -1,5 +1,14 @@
 ---
+const pageTitle = "Sobre mi";
 
+const identity = {
+    firstName: 'Sarah',
+    country: 'Canada',
+    occupation: 'Escritor tecnico',
+    hobbies: ['fotografia', 'observacioln de aver', 'peñarol'],
+};
+
+const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'Redaccion de documentos'];
 ---
 
 <html lang="en">
@@ -8,7 +17,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Inicio</a>
@@ -16,12 +25,28 @@
         <a href="/blog">Blog</a>
 
         
-		<h1>Sobre mi</h1>
+		<h1>{pageTitle}</h1>
 
         <h2>... y mi nuevo sitio Astro!</h2>
 
         <p>Estoy trabajando en el tutorial introductorio de Astro. Esta es la segunda pagina de mi sitio web, y es la primera que he construido yo mismo!</p>
 
         <p>Este sitio se ira actualizando a medida que vaya completando mas partes del tutorial, asi que no dejes de visitarlo para ver como va mi viaje!</p>
+
+        <p>He aquí algunos datos sobre mí:</p>
+
+        <ul>
+            <li>Me llamo {identity.firstName}.</li>
+            <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
+            {identity.hobbies.length >= 2 &&
+                <li>Dos de mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+            }
+        </ul>
+
+        <p>Mis habilidades son:</p>
+        
+        <ul>
+            {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
 	</body>
 </html>
